@@ -1,0 +1,11 @@
+.create{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-container{
+    box-sizing: border-box;
+    border: 1px solid black;
+    display: inline-block;
+}

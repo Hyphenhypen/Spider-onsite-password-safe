@@ -1,49 +1,56 @@
-import React, { useState } from 'react'
-import { QuizData } from '../data/QuizData'
+import React, { useEffect, useState } from 'react'
 import QuizResult from './SolveResult';
-import './Solve.css'
+import axios from 'axios';
+import './Solve.css';
+
 function Solve() {
+
+    const [question, setQuestion] = useState([]);
     const [currentQuestion,setCurrentQuestion]=useState(0);
     const [score,setScore] = useState(0);
     const [clickedOption,setClickedOption]=useState(0);
     const [showResult,setShowResult]=useState(false);
-    
-    const fetchData = (value) => {
-        fetch('http://localhost:8000/questions', {
-          method: "GET"
-        })
-          .then((response) => response.json())
-          .then((json) => {
-            const results = json.filter((question) => {
-              return (
-                question.questionName
-              );
-            });
-            console.log(json, "userData")
-            console.log(results)
-            setCurrentQuestion(results);
-          }, []);
-      };
 
-    const changeQuestion = ()=>{
+    let option = '';
+    useEffect(()=>{
+        axios.get('/questions')
+        .then((response) => {
+            setQuestion(response.data) 
+        })
+        .catch((err) => console.log(err));
+    }, [])
+
+    const changeQuestion = async ()=>{
         updateScore();
-        if(currentQuestion< QuizData.length-1){
+        if(currentQuestion < 3){
             setCurrentQuestion(currentQuestion+1);
             setClickedOption(0);
-        }else{
+        }
+        else{
             setShowResult(true)
+            setCurrentQuestion(0);
         }
     }
+
     const updateScore=()=>{
-        if(clickedOption===QuizData[currentQuestion].answer){
+        if(clickedOption === question[0].correctAnswer){
             setScore(score+1);
         }
     }
+
     const resetAll=()=>{
         setShowResult(false);
         setCurrentQuestion(0);
         setClickedOption(0);
         setScore(0);
+    }
+
+    console.log(question)
+    console.log(currentQuestion)
+
+    const optionResult = () =>{
+        option = document.getElementById('question-text').value;
+        console.log(option)
     }
   return (
     <div>
@@ -51,30 +58,20 @@ function Solve() {
         <div className="solve">
         <div className="Solve-container">
             {showResult ? (
-                <QuizResult score={score} totalScore={QuizData.length} tryAgain={resetAll}/>
+                <QuizResult score={score} totalScore={question.length} tryAgain={resetAll}/>
             ):(
             <>
             <div className="question">
                 <span id="question-number">{currentQuestion+1}. </span>
-                <span id="question-txt">{QuizData[currentQuestion].question}</span>
+                <span id="question-txt">{question[currentQuestion].questionName}</span>
             </div>
             <div className="option-container">
-                {QuizData[currentQuestion].options.map((option,i)=>{
-                    return(
-                        <button 
-                        // className="option-btn"
-                        className={`option-btn ${
-                            clickedOption == i+1?"checked":null
-                        }`}
-                        key={i}
-                        onClick={()=>setClickedOption(i+1)}
-                        >
-                        {option}
-                        </button>
-                    )
-                })}                
+                <button id="question-txt" className="options" onClick={optionResult}>{question[currentQuestion].option1}</button>
+                <button id="question-txt" className="options">{question[currentQuestion].option2}</button>
+                <button id="question-txt" className="options">{question[currentQuestion].option3}</button>
+                <button id="question-txt" className="options">{question[currentQuestion].option4}</button>
             </div>
-            <input type="button" value="Next" id="solve-next-button" onClick={changeQuestion}/>
+            <input type="button" value="Next" id="solve-next-button" onClick={changeQuestion} />
             </>)}
         </div>
         </div>

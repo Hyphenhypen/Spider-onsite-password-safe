@@ -71,7 +71,7 @@ const loginUser= async (req, res)=>{
     }
 }
 
-// Generating profile for login user and other user
+// Generating profile for login user
 const getProfile=(req, res)=>{
     const {token} = req.cookies
     if(token){
@@ -85,13 +85,22 @@ const getProfile=(req, res)=>{
     }
 }
 
-
-
 // Generating all profiles for search bar
 const allProfile = async(req, res) =>{
     try {
         const allUser = await User.find({});
         res.json(allUser);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+// Generating all profiles for search bar
+const allQuestion = async(req, res) =>{
+    try {
+        const Solvequestion = await Question.find({});
+        res.json(Solvequestion);
     } catch (error) {
         console.log(error)
     }
@@ -148,7 +157,7 @@ const createQuizz = async(req, res) =>{
         const exist = await Question.findOne({questionName});
         if(exist){
             return res.json({
-                error: 'Question already existed'
+                error: 'Question already exists'
             })
         }
 
@@ -168,5 +177,6 @@ module.exports = {
     loginUser,
     getProfile,
     allProfile,
-    createQuizz
+    createQuizz,
+    allQuestion
 }

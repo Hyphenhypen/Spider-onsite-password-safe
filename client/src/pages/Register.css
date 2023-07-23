@@ -1,52 +1,33 @@
-.create{
+.Register{
+    text-align: center;
+    margin: 10vh;
+}
+
+.Register h1{
+    color: grey;
+}
+.RegisterContainer{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.create-container{
     box-sizing: border-box;
     align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10vh;
 }
 
-.questionName{
+.RegisterName{
     height: 100px;
-    width: 600px;
+    width: 400px;
     border: 1px solid black;
     border-radius: 5px;
     overflow: hidden;
-}
-.questionName input{
-    margin: 0px 20px 0px 20px;
-    height: 100px;
+    margin-top: 30px;
 }
 
-.option{
-    border: 1px solid black;
-    margin: 10px auto;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
-}
-
-.correctAnswer{
-    border: 1px solid black;
-    margin: 10px auto;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
-}
-
-.userName{
-    border: 1px solid black;
-    margin: 10px;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
+.RegisterName input{
+    margin-left: 30px;
 }
 
 .submit{

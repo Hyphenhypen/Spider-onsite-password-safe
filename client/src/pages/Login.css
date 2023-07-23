@@ -1,52 +1,33 @@
-.create{
+.Login{
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.Login h1{
+    color: grey;
+}
+.LoginContainer{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.create-container{
     box-sizing: border-box;
     align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10vh;
 }
 
-.questionName{
+.LoginName{
     height: 100px;
-    width: 600px;
+    width: 400px;
     border: 1px solid black;
     border-radius: 5px;
     overflow: hidden;
-}
-.questionName input{
-    margin: 0px 20px 0px 20px;
-    height: 100px;
+    margin-top: 30px;
 }
 
-.option{
-    border: 1px solid black;
-    margin: 10px auto;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
-}
-
-.correctAnswer{
-    border: 1px solid black;
-    margin: 10px auto;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
-}
-
-.userName{
-    border: 1px solid black;
-    margin: 10px;
-    height: 40px;
-    width: 400px;
-    border-radius: 5px;
+.LoginName input{
+    margin-left: 30px;
 }
 
 .submit{

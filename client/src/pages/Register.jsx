@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios'
+import './Register.css'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
 export default function Register() {
@@ -31,25 +32,30 @@ export default function Register() {
         }
     }
   return (
-    <div>
-        <form onSubmit={registerUser}>
-            <label>Name</label>
-            <input type="text" placeholder='Enter your name'
-            value={data.name} 
-            onChange={(e)=> setData({...data, name : e.target.value})}/>
-            <br/>
-            <label>Email</label>
-            <input type="email" placeholder='Enter your email'
-            value={data.email} 
-            onChange={(e)=> setData({...data, email : e.target.value})}/>
-            <br/>
-            <label>Password</label>
-            <input type="password" placeholder='Enter your password'
-            value={data.password} 
-            onChange={(e)=> setData({...data, password : e.target.value})}/>
-            <br />
-            <button type="submit">Submit</button>
-        </form>
+    <div className="Register">
+        <h1>Register DashBoard</h1>
+        <div className="RegisterContainer">
+            <form onSubmit={registerUser}>
+                <div className="RegisterName">
+                    <input type="text" placeholder='Enter your name'
+                    value={data.name} 
+                    onChange={(e)=> setData({...data, name : e.target.value})}/>
+                </div>
+                <div className="RegisterName">
+                    <input type="email" placeholder='Enter your email'
+                    value={data.email} 
+                    onChange={(e)=> setData({...data, email : e.target.value})}/>
+                </div>
+                <div className="RegisterName">
+                    <input type="password" placeholder='Enter your password'
+                    value={data.password} 
+                    onChange={(e)=> setData({...data, password : e.target.value})}/>
+                </div>
+                <div className="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
   )
 }

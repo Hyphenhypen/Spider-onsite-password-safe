@@ -1,0 +1,15 @@
+#next-button{
+    padding:10px;
+    border:none;
+    background-color: #276272;
+    color:white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
+    font-size: larger;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: 0.2s;
+    width:130px;
+    bottom: 15px;
+    margin: 300px auto;
+}

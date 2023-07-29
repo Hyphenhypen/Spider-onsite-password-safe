@@ -6,26 +6,27 @@ const questionSchema = new Schema({
         type: String,
         unique: true,
     },
-    option1: {
-        type: String,
-        unique: true
+    option: 
+    {
+        option1: {
+            type: String,
+            unique: true
+        },
+        option2: {
+            type: String,
+            unique: true
+        },
+        option3: {
+            type: String,
+            unique: true
+        },
+        option4: {
+            type: String,
+            unique: true
+        }, 
     },
-    option2: {
-        type: String,
-        unique: true
-    },
-    option3: {
-        type: String,
-        unique: true
-    },
-    option4: {
-        type: String,
-        unique: true
-    }, 
+
     correctAnswer:{
-        type: String
-    },
-    questionUserName:{
         type: String
     }
 })

@@ -7,20 +7,22 @@ export default function Create() {
     const navigate = useNavigate();
     const [data, setData] = useState({
         questionName: '',
-        option1: '',
-        option2: '',
-        option3: '',
-        option4: '',
+        option:{ 
+            option1: '',
+            option2: '',
+            option3: '',
+            option4: ''
+        },
         correctAnswer: '',
         questionUserName: '',
     })
 
     const createQuizz = async (e) =>{
         e.preventDefault();
-        const {questionName, option1, option2, option3, option4, correctAnswer, questionUserName} = data
+        const {questionName, option, correctAnswer} = data
         try{
             const {data} = await axios.post('/create', {
-                questionName, option1, option2, option3, option4, correctAnswer, questionUserName
+                questionName, option, correctAnswer
             })
             if(data.error){
                 toast.error(data.error);
@@ -34,6 +36,7 @@ export default function Create() {
             console.log(error)
         }
     }
+    console.log(data)
   return (
     <div className="create">
         <div className="create-container">
@@ -47,38 +50,48 @@ export default function Create() {
             <div className="option">
                 {/* <label>Option1: </label> */}
                 <input type="text" placeholder='Enter your first option'
-                value = {data.option1}
-                onChange={(e)=> setData({...data, option1 : e.target.value})}/>
+                value = {data.option.option1}
+                onChange={(e)=> {
+                    const updatedMainObject = { ...data };
+                    data.option.option1 = e.target.value;
+                    setData(updatedMainObject);
+                }}/>
             </div>
             <div className="option">
             {/* <label>Option2: </label> */}
             <input type="text" placeholder='Enter your second option'
-            value = {data.option2}
-            onChange={(e)=> setData({...data, option2 : e.target.value})}/>
+            value = {data.option.option2}
+            onChange={(e)=> {
+                const updatedMainObject = { ...data };
+                data.option.option2 = e.target.value;
+                setData(updatedMainObject);
+            }}/>
             </div>
             <div className="option">
                 {/* <label>Option3: </label> */}
                 <input type="text" placeholder='Enter your third option'
-                value = {data.option3}
-                onChange={(e)=> setData({...data, option3 : e.target.value})}/>
+                value = {data.option.option3}
+                onChange={(e)=> {
+                    const updatedMainObject = { ...data };
+                    data.option.option3 = e.target.value;
+                    setData(updatedMainObject);
+                }}/>
             </div>
             <div className="option">
                 {/* <label>Option4: </label> */}
                 <input type="text" placeholder='Enter your fourth option'
-                value = {data.option4}
-                onChange={(e)=> setData({...data, option4 : e.target.value})}/>
+                value = {data.option.option4}
+                onChange={(e)=> {
+                    const updatedMainObject = { ...data };
+                    data.option.option4 = e.target.value;
+                    setData(updatedMainObject);
+                }}/>
             </div>
             <div className="correctAnswer">
                 {/* <label>CorrectAnswer: </label> */}
                 <input type="text" placeholder='Enter your fourth option'
                 value = {data.correctAnswer}
                 onChange={(e)=> setData({...data, correctAnswer : e.target.value})}/>
-            </div>
-            <div className="userName">
-                {/* <label>Username: </label> */}
-                <input type="text" placeholder='Enter your name'
-                value = {data.questionUserName}
-                onChange={(e)=> setData({...data, questionUserName : e.target.value})}/>
             </div>
             <div className="submit">
                 <button type="submit">Submit</button>

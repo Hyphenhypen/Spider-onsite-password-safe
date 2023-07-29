@@ -110,7 +110,7 @@ const allQuestion = async(req, res) =>{
 // Posting request for questions
 const createQuizz = async(req, res) =>{
     try{
-        const {questionName, option1, option2, option3, option4, correctAnswer, questionUserName} = req.body;
+        const {questionName, option, correctAnswer} = req.body;
         // check if question was entered
         if(!questionName){
             return res.json({
@@ -118,25 +118,25 @@ const createQuizz = async(req, res) =>{
             })
         };
         // check if options was entered
-        if(!option1){
+        if(!option.option1){
             return res.json({
                 error: 'First option is required'
             })
         };
 
-        if(!option2){
+        if(!option.option2){
             return res.json({
                 error: 'Second option is required'
             })
         };
 
-        if(!option3){
+        if(!option.option3){
             return res.json({
                 error: 'Third option is required'
             })
         };
 
-        if(!option4){
+        if(!option.option4){
             return res.json({
                 error: 'Fourth option is required'
             })
@@ -145,12 +145,6 @@ const createQuizz = async(req, res) =>{
         if(!correctAnswer){
             return res.json({
                 error: 'Enter the answer'
-            })
-        };
-
-        if(!questionUserName){
-            return res.json({
-                error: 'Enter the username'
             })
         };
         //  check question  
@@ -163,7 +157,7 @@ const createQuizz = async(req, res) =>{
 
         //create question in database
         const question = await Question.create({
-            questionName, option1,option2, option3, option4,correctAnswer, questionUserName
+            questionName, option ,correctAnswer
         })
         return res.json(question)
     }

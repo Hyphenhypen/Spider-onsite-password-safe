@@ -63,13 +63,13 @@ function Solve() {
             <>
             <div className="question">
                 <span id="question-number">{currentQuestion+1}. </span>
-                <span id="question-txt">{question[currentQuestion].questionName}</span>
+                <span id="question-txt">{question[0].questionName}</span>
             </div>
             <div className="option-container">
-                <button id="question-txt" className="options" onClick={optionResult}>{question[currentQuestion].option1}</button>
-                <button id="question-txt" className="options">{question[currentQuestion].option2}</button>
-                <button id="question-txt" className="options">{question[currentQuestion].option3}</button>
-                <button id="question-txt" className="options">{question[currentQuestion].option4}</button>
+                <button id="question-txt" className="options" onClick={optionResult}>{question[0].option1}</button>
+                <button id="question-txt" className="options">{question[0].option2}</button>
+                <button id="question-txt" className="options">{question[0].option3}</button>
+                <button id="question-txt" className="options">{question[0].option4}</button>
             </div>
             <input type="button" value="Next" id="solve-next-button" onClick={changeQuestion} />
             </>)}

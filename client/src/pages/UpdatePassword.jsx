@@ -11,20 +11,21 @@ export default function Login() {
         password: '',
         organisation: '',
         orgpassword:'',
+        newpassword: '',
     })
 
     const loginUser = async (e)=>{
         e.preventDefault();
-        const {email, password,organisation, orgpassword} = data
+        const {email, password,organisation, orgpassword, newpassword} = data
         try {
-            const {data} = await axios.put('/login', {
-                email, password, organisation, orgpassword
+            const {data} = await axios.post('/updatePassword', {
+                email, password, organisation, orgpassword, newpassword
             });
             if(data.error){
                 toast.error(data.error)
             }else{
                 setData({})
-                navigate('/login')
+                navigate('/uploadPassword')
             }
         } catch (error) {
             
@@ -32,7 +33,7 @@ export default function Login() {
     }
   return (
       <div className="Login">
-        <h1>Uploading Passwords</h1>
+        <h1>Update Password</h1>
         <div className="LoginContainer">
             <form onSubmit={loginUser}>
                 <div className="LoginName">
@@ -57,6 +58,12 @@ export default function Login() {
                     <input type="password" placeholder='Enter organisations password'
                     value = {data.orgpassword}
                     onChange={(e)=>setData({...data, orgpassword: e.target.value})}
+                    />
+                </div>
+                <div className="LoginName">
+                    <input type="password" placeholder='Enter organisations password'
+                    value = {data.newpassword}
+                    onChange={(e)=>setData({...data, newpassword: e.target.value})}
                     />
                 </div>
                 <div className="submit">

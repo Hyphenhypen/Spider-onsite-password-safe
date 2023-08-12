@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Register.css'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
+
 export default function Register() {
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -33,7 +34,7 @@ export default function Register() {
     }
   return (
     <div className="Register">
-        <h1>Register DashBoard</h1>
+        <h1>Register Yourself</h1>
         <div className="RegisterContainer">
             <form onSubmit={registerUser}>
                 <div className="RegisterName">

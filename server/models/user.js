@@ -1,3 +1,4 @@
+// import passwordModel from './password';
 const mongoose = require('mongoose')
 const {Schema} = mongoose
 
@@ -7,7 +8,8 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    passwordList: Object
 })
 
 const userModel = mongoose.model('User', userSchema);

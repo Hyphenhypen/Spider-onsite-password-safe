@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background: #705bd9;
+    font-size: 1.3rem;
+}
+
+.right{
+    width: 40%;
+    justify-content: space-between;
+    display: flex;
+}
+
+.right button{
+    background: #705bd9;
+    color: white;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+}
+
+.left{
+    color: white;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
